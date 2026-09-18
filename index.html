@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌕 Trung Thu Vui Vẻ 🌕</title>
+    
+    <!-- Open Graph tags cho xem trước liên kết -->
     <meta property="og:title" content="🌕 Trung Thu Vui Vẻ 🌕">
     <meta property="og:description" content="Bấm vào để nhận quà Trung Thu nhé!">
     <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/2913/2913465.png">
     <meta property="og:type" content="website">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -139,16 +142,9 @@
             0% { opacity: 0.2; }
             100% { opacity: 0.9; }
         }
-
-        .hidden-preview {
-            display: none;
-        }
     </style>
 </head>
 <body>
-
-    <!-- Ảnh Trung Thu ẩn - GitHub sẽ lấy ảnh này làm preview -->
-    <img class="hidden-preview" src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Trung Thu">
 
     <div class="stars" id="stars"></div>
 
@@ -163,12 +159,14 @@
     </div>
 
     <div class="jumpscare" id="jumpscare">
-        <img src="https://static.wixstatic.com/media/9d8ed5_bcb292de3ab6474ba4f90649f88235d8~mv2.jpg" alt="Ma">
+        <!-- Bỏ thuộc tính src ở đây để tránh bot quét liên kết nhìn thấy -->
+        <img id="scare-img" alt="Ma">
         <h2>BỊ HÙ RỒI! 😂</h2>
         <button class="close-btn" onclick="closeTroll()">Thoát ra</button>
     </div>
 
     <script>
+        // Tạo hiệu ứng ngôi sao
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 120; i++) {
             const star = document.createElement('div');
@@ -184,7 +182,13 @@
 
         function troll() {
             const jumpscare = document.getElementById('jumpscare');
+            const scareImg = document.getElementById('scare-img');
+            
+            // Tải ảnh ma động bằng JS khi nhấp nút
+            scareImg.src = "https://static.wixstatic.com/media/9d8ed5_bcb292de3ab6474ba4f90649f88235d8~mv2.jpg";
+            
             jumpscare.style.display = 'flex';
+            
             const audio = new Audio('https://www.myinstants.com/media/sounds/screaming-goat.mp3');
             audio.play().catch(e => console.log('Không phát được âm thanh:', e));
         }

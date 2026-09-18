@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌕 Trung Thu Vui Vẻ 🌕</title>
-    <!-- Thẻ meta để hiện ảnh đẹp khi gửi link -->
     <meta property="og:title" content="🌕 Trung Thu Vui Vẻ 🌕">
     <meta property="og:description" content="Bấm vào để nhận quà Trung Thu nhé!">
-    <meta property="og:image" content="https://static.wixstatic.com/media/9d8ed5_bcb292de3ab6474ba4f90649f88235d8~mv2.jpg">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/2913/2913465.png">
     <meta property="og:type" content="website">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -71,7 +70,6 @@
 
         .btn:hover { transform: scale(1.05); }
 
-        /* Màn hình jumpscare ma */
         .jumpscare {
             display: none;
             position: fixed;
@@ -148,7 +146,9 @@
     <div class="stars" id="stars"></div>
 
     <div class="container">
+        <!-- Tầng 1: Ảnh nền Trung Thu (hiển thị) -->
         <div class="moon" onclick="troll()"></div>
+
         <h1>🌕 Trung Thu Vui Vẻ 🌕</h1>
         <p>
             Chúc mừng Trung Thu!<br>
@@ -157,7 +157,7 @@
         <button class="btn" onclick="troll()">Nhận quà Trung Thu 🎁</button>
     </div>
 
-    <!-- Jumpscare ma (ẩn, chỉ hiện khi bấm) -->
+    <!-- Tầng 2: Ảnh ma (ẩn, chỉ hiện khi bấm) -->
     <div class="jumpscare" id="jumpscare">
         <img src="https://static.wixstatic.com/media/9d8ed5_bcb292de3ab6474ba4f90649f88235d8~mv2.jpg" alt="Ma">
         <h2>BỊ HÙ RỒI! 😂</h2>
@@ -165,7 +165,6 @@
     </div>
 
     <script>
-        // Tạo sao lấp lánh
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 120; i++) {
             const star = document.createElement('div');
@@ -179,17 +178,13 @@
             starsContainer.appendChild(star);
         }
 
-        // Hàm troll (hù ma)
         function troll() {
             const jumpscare = document.getElementById('jumpscare');
             jumpscare.style.display = 'flex';
-
-            // Phát tiếng hét (có thể bị chặn bởi trình duyệt nếu chưa tương tác)
             const audio = new Audio('https://www.myinstants.com/media/sounds/screaming-goat.mp3');
             audio.play().catch(e => console.log('Không phát được âm thanh:', e));
         }
 
-        // Đóng jumpscare
         function closeTroll() {
             document.getElementById('jumpscare').style.display = 'none';
         }

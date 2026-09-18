@@ -3,259 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trung Thu của Phùng Thảo My 🌕</title>
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    <title>🌕 Trung Thu Vui Vẻ 🌕</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* Ẩn thanh cuộn toàn cục */
-    html, body {
-        scrollbar-width: none;          /* Firefox */
-        -ms-overflow-style: none;       /* IE/Edge */
-    }
-    html::-webkit-scrollbar,
-    body::-webkit-scrollbar {
-        display: none;                   /* Chrome/Safari */
-    }
+        body {
+            background: linear-gradient(135deg, #0d1b2a, #1b263b);
+            min-height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; position: relative;
+        }
 
-    body {
-        background: linear-gradient(135deg, #0d1b2a, #1b263b);
-        min-height: 100vh;
-        display: flex; justify-content: center; align-items: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        overflow-y: auto;
-        padding: 20px 0;
-        position: relative;
-    }
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 20px;
+        }
 
-    .container {
-        text-align: center;
-        z-index: 10;
-        padding: 20px;
-        max-height: 100vh;
-        overflow-y: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    .container::-webkit-scrollbar {
-        display: none;
-    }
+        .moon {
+            width: 120px; height: 120px;
+            background: radial-gradient(circle at 30% 30%, #fffbe6, #ffd966);
+            border-radius: 50%; margin: 0 auto 20px;
+            box-shadow: 0 0 60px rgba(255, 217, 102, 0.6);
+            animation: glow 3s ease-in-out infinite alternate;
+            position: relative;
+            cursor: pointer;
+        }
 
-    .moon {
-        width: 130px; height: 130px;
-        background: radial-gradient(circle at 30% 30%, #fffbe6, #ffd966);
-        border-radius: 50%; margin: 0 auto 25px;
-        box-shadow: 0 0 60px rgba(255, 217, 102, 0.6), 0 0 120px rgba(255, 217, 102, 0.3);
-        animation: glow 3s ease-in-out infinite alternate;
-        position: relative;
-    }
+        .moon::after {
+            content: "🌝"; position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+        }
 
-    .moon::after {
-        content: "❤"; position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2.5rem; color: #d90429;
-        text-shadow: 0 0 15px rgba(217, 4, 41, 0.8);
-        animation: heartbeat 1.5s ease-in-out infinite;
-    }
+        @keyframes glow {
+            0% { box-shadow: 0 0 60px rgba(255, 217, 102, 0.6); }
+            100% { box-shadow: 0 0 100px rgba(255, 217, 102, 1); }
+        }
 
-    @keyframes heartbeat {
-        0%, 100% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.2); }
-    }
+        h1 {
+            color: #ffd966; font-size: 2rem; margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 217, 102, 0.5);
+        }
 
-    @keyframes glow {
-        0% { box-shadow: 0 0 60px rgba(255, 217, 102, 0.6), 0 0 120px rgba(255, 217, 102, 0.3); }
-        100% { box-shadow: 0 0 80px rgba(255, 217, 102, 0.9), 0 0 160px rgba(255, 217, 102, 0.5); }
-    }
+        p {
+            color: #e0e0e0; font-size: 1.1rem; line-height: 1.8;
+            max-width: 500px; margin: 0 auto 20px;
+        }
 
-    h1 {
-        color: #ffd966; font-size: 2.2rem; margin-bottom: 15px;
-        text-shadow: 0 0 20px rgba(255, 217, 102, 0.5);
-        letter-spacing: 1px;
-    }
+        .btn {
+            display: inline-block; padding: 12px 35px;
+            background: linear-gradient(135deg, #ffd966, #f0a500);
+            color: #0d1b2a; text-decoration: none;
+            border-radius: 30px; font-weight: bold; font-size: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(240, 165, 0, 0.4);
+            cursor: pointer; border: none;
+            margin-top: 10px;
+        }
 
-    h1 span { color: #ff6b6b; text-shadow: 0 0 25px rgba(255, 107, 107, 0.8); }
+        .btn:hover { transform: scale(1.05); }
 
-    p {
-        color: #e0e0e0; font-size: 1.1rem; line-height: 1.9;
-        max-width: 550px; margin: 0 auto 25px;
-    }
+        /* Màn hình jumpscare ma */
+        .jumpscare {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: black;
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
 
-    .lantern {
-        font-size: 3rem; animation: float 3s ease-in-out infinite;
-        display: inline-block; margin: 0 12px;
-    }
-    .lantern:nth-child(2) { animation-delay: 0.5s; }
-    .lantern:nth-child(3) { animation-delay: 1s; }
+        .jumpscare img {
+            width: 90%;
+            max-width: 600px;
+            animation: shake 0.04s infinite;
+        }
 
-    @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-15px); }
-    }
+        @keyframes shake {
+            0% { transform: translate(0, 0) scale(1); }
+            20% { transform: translate(15px, -10px) scale(1.05); }
+            40% { transform: translate(-15px, 10px) scale(1.02); }
+            60% { transform: translate(10px, 15px) scale(1.05); }
+            80% { transform: translate(-10px, -15px) scale(1.02); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
 
-    .btn {
-        display: inline-block; padding: 12px 35px;
-        background: linear-gradient(135deg, #ffd966, #f0a500);
-        color: #0d1b2a; text-decoration: none;
-        border-radius: 30px; font-weight: bold; font-size: 1rem;
-        transition: transform 0.3s, box-shadow 0.3s;
-        box-shadow: 0 4px 15px rgba(240, 165, 0, 0.4);
-        cursor: pointer; border: none;
-    }
+        .jumpscare h2 {
+            color: red;
+            font-size: 3rem;
+            margin-top: 20px;
+            text-shadow: 0 0 30px red, 0 0 60px red;
+            animation: shake 0.04s infinite;
+        }
 
-    .btn:hover { transform: scale(1.05); box-shadow: 0 6px 25px rgba(240, 165, 0, 0.6); }
+        .jumpscare .close-btn {
+            margin-top: 40px;
+            padding: 15px 50px;
+            background: #ffd966;
+            color: #0d1b2a;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    .wish-box {
-        display: none; margin-top: 25px; padding: 20px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 217, 102, 0.3);
-        border-radius: 15px; color: #ffd966;
-        font-size: 1.05rem; line-height: 1.8;
-        max-width: 500px; margin-left: auto; margin-right: auto;
-        animation: fadeIn 0.6s ease;
-    }
+        .jumpscare .close-btn:hover {
+            background: #f0a500;
+            transform: scale(1.05);
+        }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+        .stars {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; overflow: hidden;
+        }
 
-    .stars {
-        position: absolute; top: 0; left: 0;
-        width: 100%; height: 100%;
-        pointer-events: none; overflow: hidden;
-    }
+        .star {
+            position: absolute; background: white;
+            border-radius: 50%; opacity: 0.6;
+            animation: twinkle 2s infinite alternate;
+        }
 
-    .star {
-        position: absolute; background: white;
-        border-radius: 50%; opacity: 0.6;
-        animation: twinkle 2s infinite alternate;
-    }
-
-    @keyframes twinkle {
-        0% { opacity: 0.2; }
-        100% { opacity: 0.9; }
-    }
-
-    .footer { margin-top: 20px; font-size: 0.9rem; color: #8899aa; }
-
-    .quiz-btn {
-        margin-top: 15px;
-        background: linear-gradient(135deg, #ff6b6b, #d90429);
-        color: white;
-    }
-
-    .quiz-box {
-        border-color: rgba(255, 107, 107, 0.5) !important;
-    }
-
-    .input-group {
-        display: flex; flex-direction: column; gap: 10px; margin-top: 15px;
-    }
-
-    .input-group input {
-        padding: 12px 15px; border-radius: 10px;
-        border: 1px solid #ffd966; background: #1b263b;
-        color: white; font-size: 1rem; outline: none;
-    }
-
-    .input-group input::placeholder {
-        color: #8899aa;
-    }
-
-    .send-btn {
-        background: linear-gradient(135deg, #ff6b6b, #d90429);
-        color: white;
-    }
-
-    .waiting-msg {
-        display: none;
-        margin-top: 25px;
-        padding: 20px;
-        background: rgba(255, 217, 102, 0.1);
-        border: 1px solid #ffd966;
-        border-radius: 15px;
-        color: #ffd966;
-        font-size: 1.1rem;
-        line-height: 1.8;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-        animation: fadeIn 0.6s ease;
-    }
-</style>
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 0.9; }
+        }
+    </style>
 </head>
 <body>
 
     <div class="stars" id="stars"></div>
 
     <div class="container">
-        <div class="moon"></div>
-        <h1>🌕 Trung Thu<span></span> 🌕</h1>
+        <div class="moon" onclick="troll()"></div>
+        <h1>🌕 Trung Thu Vui Vẻ 🌕</h1>
         <p>
-            Đêm rằm tháng tám, trăng sáng tỏ,<br>
-            Anh chúc <strong>Phùng Thảo My</strong> một mùa Trung Thu thật ấm áp,<br>
-            luôn xinh đẹp, vui vẻ và hạnh phúc.<br>
-            và e hãy luôn nghĩ về ah, ah iu e rất nhiều<br>
-            nếu e iu ah thì hãy trả lời 2 câu hỏi của anh nha,<br>
-            cái lời chúc riêng e muốn đọc thì đọc không đọc cx được
+            Chúc mừng Trung Thu!<br>
+            Bấm vào mặt trăng để nhận quà nhé 🎁
         </p>
-        <div>
-            <span class="lantern">🏮</span>
-            <span class="lantern">🌕</span>
-            <span class="lantern">🏮</span>
-        </div>
-        <br>
-        <button class="btn" onclick="showWish()">chúc riêng 🎁</button>
+        <button class="btn" onclick="troll()">Nhận quà Trung Thu 🎁</button>
+    </div>
 
-        <div class="wish-box" id="wishBox">
-            🌕 <strong>Gửi Phùng Thảo My</strong> 🌕<br><br>
-            Chúc em một mùa Trung Thu thật đặc biệt, bên gia đình và những người thương yêu. Anh hy vọng em luôn cười thật tươi và nhớ rằng có một người luôn nghĩ về em. 🥮❤️
-        </div>
-
-        <!-- Nút mở câu hỏi -->
-        <button class="btn quiz-btn" onclick="showQuestion()">Trả lời câu hỏi nhỏ nè nhóc 💌</button>
-
-        <!-- Khu vực câu hỏi (ẩn) -->
-        <div id="questionBox" class="wish-box quiz-box" style="display: none;">
-            <!-- Câu hỏi 1 -->
-            <div id="question1">
-                <p style="color: #ff6b6b; font-weight: bold; margin-bottom: 15px;">
-                    Câu hỏi 1: Nếu có một người khác đến và cho em mọi thứ em muốn, học giỏi hơn anh, đẹp trai hơn anh, thì em có chọn ở lại với anh không? Hay em sẽ buông tay anh để đi theo người đó?
-                </p>
-                <div class="input-group">
-                    <input type="text" id="answerInput1" placeholder="Nhập câu trả lời của em...">
-                    <button class="btn send-btn" onclick="sendAnswer1()">Gửi câu trả lời 1 ❤️</button>
-                </div>
-                <p id="answerResult1" style="margin-top: 15px; font-size: 1rem;"></p>
-            </div>
-
-            <!-- Câu hỏi 2 (ẩn ban đầu) -->
-            <div id="question2" style="display: none;">
-                <p style="color: #ff6b6b; font-weight: bold; margin-bottom: 15px;">
-                    Câu hỏi 2: e có thể chờ anh không?
-                </p>
-                <div class="input-group">
-                    <input type="text" id="answerInput2" placeholder="Nhập câu trả lời của em...">
-                    <button class="btn send-btn" onclick="sendAnswer2()">Gửi câu trả lời 2 ❤️</button>
-                </div>
-                <p id="answerResult2" style="margin-top: 15px; font-size: 1rem;"></p>
-            </div>
-        </div>
-
-        <!-- Thông báo chờ phản hồi -->
-        <div id="waitingBox" class="waiting-msg">
-            📩 Đã gửi câu trả lời!<br>
-            Vui lòng chờ phản hồi từ <strong>Zalo</strong> của anh nhé ❤️
-        </div>
-
-        <div class="footer">Made with ❤️ for Phùng Thảo My</div>
-        <div class="footer"> by DEV HOÀI ANH</div>
+    <!-- Jumpscare ma -->
+    <div class="jumpscare" id="jumpscare">
+        <img src="https://static.wixstatic.com/media/9d8ed5_bcb292de3ab6474ba4f90649f88235d8~mv2.jpg" alt="Ma">
+        <h2>BỊ HÙ RỒI! 😂</h2>
+        <button class="close-btn" onclick="closeTroll()">Thoát ra</button>
     </div>
 
     <script>
-        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1549816027334844517/LdefYC0u-QA8eGakMZZFxdTJrT0Zuh1rsZZGtFx50Z80FOXGKeBlcHsQ64T0gJM2XOk1";
-
         // Tạo sao lấp lánh
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 120; i++) {
@@ -270,125 +174,19 @@
             starsContainer.appendChild(star);
         }
 
-        let isWishOpen = false;
-        let isQuestionOpen = false;
+        // Hàm troll (hù ma)
+        function troll() {
+            const jumpscare = document.getElementById('jumpscare');
+            jumpscare.style.display = 'flex';
 
-        function showWish() {
-            const wishBox = document.getElementById('wishBox');
-            const questionBox = document.getElementById('questionBox');
-            const waitingBox = document.getElementById('waitingBox');
-
-            if (isQuestionOpen) {
-                questionBox.style.display = 'none';
-                isQuestionOpen = false;
-            }
-            if (waitingBox.style.display === 'block') {
-                waitingBox.style.display = 'none';
-            }
-
-            isWishOpen = !isWishOpen;
-            wishBox.style.display = isWishOpen ? 'block' : 'none';
+            // Phát tiếng hét (có thể bị chặn bởi trình duyệt nếu chưa tương tác)
+            const audio = new Audio('https://www.myinstants.com/media/sounds/screaming-goat.mp3');
+            audio.play().catch(e => console.log('Không phát được âm thanh:', e));
         }
 
-        function showQuestion() {
-            const wishBox = document.getElementById('wishBox');
-            const questionBox = document.getElementById('questionBox');
-            const waitingBox = document.getElementById('waitingBox');
-
-            if (isWishOpen) {
-                wishBox.style.display = 'none';
-                isWishOpen = false;
-            }
-            if (waitingBox.style.display === 'block') {
-                waitingBox.style.display = 'none';
-            }
-
-            isQuestionOpen = !isQuestionOpen;
-            questionBox.style.display = isQuestionOpen ? 'block' : 'none';
-        }
-
-        // Gửi câu trả lời 1
-        function sendAnswer1() {
-            const input = document.getElementById('answerInput1');
-            const result = document.getElementById('answerResult1');
-            const answer = input.value.trim();
-
-            if (answer === "") {
-                result.innerHTML = "bạn chưa nhập gì hết";
-                result.style.color = "#f87171";
-                return;
-            }
-
-            result.innerHTML = "⏳ đang gửi lên sever";
-            result.style.color = "#ffd966";
-
-            fetch(DISCORD_WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    content: `🌕 **Thảo My đã trả lời câu hỏi 1:**\n> ${answer}`
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    result.innerHTML = `✅ Đã gửi: "${answer}"`;
-                    result.style.color = "#4ade80";
-                    // Sau 1 giây thì ẩn câu 1 và hiện câu 2
-                    setTimeout(() => {
-                        document.getElementById('question1').style.display = 'none';
-                        document.getElementById('question2').style.display = 'block';
-                    }, 1000);
-                } else {
-                    throw new Error('Lỗi gửi tin');
-                }
-            })
-            .catch(error => {
-                result.innerHTML = "gửi thất bại hãy liên hệ zalo 0777012467 tên Tech Dev Hoài Anh";
-                result.style.color = "#f87171";
-                console.error('Error:', error);
-            });
-        }
-
-        // Gửi câu trả lời 2
-        function sendAnswer2() {
-            const input = document.getElementById('answerInput2');
-            const result = document.getElementById('answerResult2');
-            const answer = input.value.trim();
-
-            if (answer === "") {
-                result.innerHTML = "bạn chưa nhập gì hết";
-                result.style.color = "#f87171";
-                return;
-            }
-
-            result.innerHTML = "⏳ đang gửi lên sever";
-            result.style.color = "#ffd966";
-
-            fetch(DISCORD_WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    content: `🌕 **Thảo My đã trả lời câu hỏi 2:**\n> ${answer}`
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    result.innerHTML = `✅ Đã gửi: "${answer}"`;
-                    result.style.color = "#4ade80";
-                    // Sau 1 giây thì ẩn câu 2 và hiện thông báo chờ Zalo
-                    setTimeout(() => {
-                        document.getElementById('question2').style.display = 'none';
-                        document.getElementById('waitingBox').style.display = 'block';
-                    }, 1000);
-                } else {
-                    throw new Error('Lỗi gửi tin');
-                }
-            })
-            .catch(error => {
-                result.innerHTML = "gửi thất bại hãy liên hệ zalo 0777012467 tên Tech Dev Hoài Anh";
-                result.style.color = "#f87171";
-                console.error('Error:', error);
-            });
+        // Đóng jumpscare
+        function closeTroll() {
+            document.getElementById('jumpscare').style.display = 'none';
         }
     </script>
 

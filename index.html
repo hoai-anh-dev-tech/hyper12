@@ -139,16 +139,21 @@
             0% { opacity: 0.2; }
             100% { opacity: 0.9; }
         }
+
+        .hidden-preview {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Ảnh Trung Thu ẩn - GitHub sẽ lấy ảnh này làm preview -->
+    <img class="hidden-preview" src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Trung Thu">
+
     <div class="stars" id="stars"></div>
 
     <div class="container">
-        <!-- Tầng 1: Ảnh nền Trung Thu (hiển thị) -->
         <div class="moon" onclick="troll()"></div>
-
         <h1>🌕 Trung Thu Vui Vẻ 🌕</h1>
         <p>
             Chúc mừng Trung Thu!<br>
@@ -157,7 +162,6 @@
         <button class="btn" onclick="troll()">Nhận quà Trung Thu 🎁</button>
     </div>
 
-    <!-- Tầng 2: Ảnh ma (ẩn, chỉ hiện khi bấm) -->
     <div class="jumpscare" id="jumpscare">
         <img src="https://static.wixstatic.com/media/9d8ed5_bcb292de3ab6474ba4f90649f88235d8~mv2.jpg" alt="Ma">
         <h2>BỊ HÙ RỒI! 😂</h2>
